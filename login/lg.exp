@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set code [lindex $argv 0 ] 
+set passwd [lindex $argv 1 ] 
+set user [lindex $argv 2 ] 
+set host [lindex $argv 3 ] 
+set timeout 1
+spawn ssh $user@$host
+expect "*Password:"
+send "$passwd $code\r"
+interact                                   //交互模式,用户会停留在远程服务器上面.
+
